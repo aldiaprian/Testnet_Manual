@@ -211,7 +211,7 @@ evmosd debug addr <evmos address>
 ## Manajemen Validator
 Unjail Validator (PASTIKAN ANDA SYNCED DENGAN NODE TERBARU!!)
 ```
-evmosd tx slashing unjail --from=validatorkey --chain-id=point_10721-1 --gas-prices=0.025apoint
+evmosd tx slashing unjail --from=$WALLET --chain-id=point_10721-1 --gas-prices=0.025apoint
 ```
 Periksa apakah validator Anda aktif: (jika output tidak kosong, Anda adalah validator)
 ```
@@ -233,9 +233,9 @@ evmosd tx distribution withdraw-all-rewards --from=$WALLET --chain-id=$EVMOS_CHA
 ## Hapus Node Secara Permanen (Cadangkan kunci Pribadi Anda terlebih dahulu jika Anda ingin bermigrasi !!)
 ```
 sudo systemctl stop evmosd
-sudo systemctl nonaktifkan evmosd
+sudo systemctl disable evmosd
 sudo rm /etc/systemd/system/evmos* -rf
-sudo rm $(yang evmosd) -rf
+sudo rm $(which evmosd) -rf
 sudo rm $HOME/.evmosd -rf
-sudo rm $HOME/rantai titik -rf
+sudo rm $HOME/point-chain -rf
 ```
