@@ -9,11 +9,14 @@ Storage : 500GB SSD
 Connection : 100 Mbps
 OS : Ubuntu 18.04 +
 
+## Explorer
+
+
 # Langsung ke TOUR nya
 
 ## Instal Otomatis
 ```
-wget -qO point.sh https://raw.githubusercontent.com/bangpateng/Point-Network/main/point.sh && chmod +x point.sh && ./point.sh
+wget -qO start.sh https://raw.githubusercontent.com/aldiaprian/Testnet_Manual/master/Point-Network/start.sh && chmod +x start.sh && ./start.sh
 ```
 
 ## Setelah menginstal silakan Muat Variabel! (Post Installation)
@@ -106,7 +109,7 @@ Intinya, Untuk Kalian Yang Claim Token Faucet Pakai Wallet Pertama Metamask dan 
 ## Export Private Key Validator kalian Dengan Perintah
 
 ```
-evmosd keys unsafe-export-eth-key $WALLET --keyring-backend file
+evmosd keys unsafe-export-eth-key $WALLET
 ```
 
 - Masukan Pharse atau Password Keyring (Sesuai Yang kalian Bikin Saat Buat Wallet)
@@ -145,5 +148,85 @@ evmosd tx staking create-validator \
 --gas="400000" \
 --gas-prices="0.025apoint" \
 --from=MASUKAN-ADDRESS-EVMOS \
---keyring-backend file
+--yes
+```
+**Penting :** Jika Output Yang keluar `code:32` atau `code:19` Artinya Error, kalian Bisa Restart Node Dengan Perintah `sudo systemctl restart evmosd && sudo journalctl -u evmosd -f -o cat` Ulangi ULang Buat Validato, Jika tx Sudah `code:0` Next Step
+## Memantau validator Anda
+Salin Txhash Nya Lalu Jalankan
+```
+evmosd query tx PASTE-TX-HASH-DI-SINI
+```
+Jika transaksi benar, Anda harus langsung menjadi bagian dari set validator. Periksa pubkey Anda terlebih dahulu:
+```
+evmosd tendermint show-validator
+```
+Anda akan melihat kunci di sana, Anda dapat mengidentifikasi simpul Anda di antara validator lain menggunakan kunci itu:
+```
+evmosd query tendermint-validator-set
+```
+Di sana Anda akan menemukan lebih banyak info seperti VotingPower Anda yang seharusnya lebih besar dari 0. Anda juga dapat memeriksa VotingPower Anda dengan menjalankan:
+```
+evmosd status
+```
+
+## Useful Commands
+Check Logs
+```
+journalctl -fu evmosd -o cat
+```
+Start Service
+```
+sudo systemctl start evmosd
+```
+Stop Service
+```
+sudo systemctl stop evmosd
+```
+Restart Service
+```
+sudo systemctl restart evmosd
+```
+## Node Info
+Synchronization info
+```
+evmosd status 2>&1 | jq .SyncInfo
+```
+Validator Info
+```
+evmosd status 2>&1 | jq .ValidatorInfo
+```
+Node Info
+```
+evmosd status 2>&1 | jq .NodeInfo
+```
+## Delegation, Dll
+Untuk mendelegasikan ke validator Anda jalankan perintah ini: Catatan: Ubah ke suka Anda, misalnya: 1000000000000000000apoint adalah 100point
+```
+evmosd tx staking delegate $(evmosd tendermint show-address) <ammount>apoint --chain-id=point_10721-1 --from=<evmosvaloper> --gas=400000 --gas-prices=0.025apoint 
+```
+Ubah `<evmosvaloper>` ke alamat valoper Anda Untuk memeriksa alamat valoper jalankan perintah ini:
+```
+evmosd debug addr <evmos address>
+```
+## Manajemen Validator
+Unjail Validator (PASTIKAN ANDA SYNCED DENGAN NODE TERBARU!!)
+```
+evmosd tx slashing unjail --from=validatorkey --chain-id=point_10721-1 --gas-prices=0.025apoint
+```
+Periksa apakah validator Anda aktif: (jika output tidak kosong, Anda adalah validator)
+```
+evmosd query tendermint-validator-set | grep "$(evmosd tendermint show-address)"
+```
+Lihat status slashing: (jika Jailed hingga tahun 1970 berarti Anda tidak dipenjara!)
+```
+evmosd query slashing sign-info $(evmosd tendermint show-validator)
+```
+## Hapus Node Secara Permanen (Cadangkan kunci Pribadi Anda terlebih dahulu jika Anda ingin bermigrasi !!)
+```
+sudo systemctl stop evmosd
+sudo systemctl nonaktifkan evmosd
+sudo rm /etc/systemd/system/evmos* -rf
+sudo rm $(yang evmosd) -rf
+sudo rm $HOME/.evmosd -rf
+sudo rm $HOME/rantai titik -rf
 ```
