@@ -221,6 +221,15 @@ Lihat status slashing: (jika Jailed hingga tahun 1970 berarti Anda tidak dipenja
 ```
 evmosd query slashing sign-info $(evmosd tendermint show-validator)
 ```
+## Claim Reward Hasil Validator
+
+```
+evmosd tx distribution withdraw-rewards VALOPER_ADDRESS-KALIAN --from=$WALLET --commission --chain-id=$EVMOS_CHAIN_ID
+```
+```
+evmosd tx distribution withdraw-all-rewards --from=$WALLET --chain-id=$EVMOS_CHAIN_ID --gas=auto
+```
+
 ## Hapus Node Secara Permanen (Cadangkan kunci Pribadi Anda terlebih dahulu jika Anda ingin bermigrasi !!)
 ```
 sudo systemctl stop evmosd
