@@ -9,7 +9,7 @@ Storage : 500GB SSD
 Connection : 100 Mbps
 OS : Ubuntu 18.04 +
 
-# #Point Network Testnet Incentivized
+# Langsung ke TOUR nya
 
 ## Instal Otomatis
 ```
