@@ -10,7 +10,7 @@ Connection : 100 Mbps
 OS : Ubuntu 18.04 +
 
 ## Explorer
-
+http://e.trxlfsnxl.xyz/point
 
 # Langsung ke TOUR nya
 
