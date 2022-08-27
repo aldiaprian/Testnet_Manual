@@ -2,15 +2,17 @@
 clear
 echo "==================================================================="
 echo -e "\e[92m"
-echo  "   wkwkkwkwwkwkwkwkwkkwkwkwkwkwkwkwkwkwkwkwkwkw  ";
-echo  "  akokaokaokaokokaoakoakaokaokaoaokaoakokaoaoaok ";
-echo  "   wkwkkwkwwkwkwkwkwkkwkwkwkwkwkwkwkwkwkwkwkwkw  ";
-echo  "  akokaokaokaokokaoakoakaokaokaoaokaoakokaoaoaok ";
-echo  "   wkwkkwkwwkwkwkwkwkkwkwkwkwkwkwkwkwkwkwkwkwkw  ";
-echo  "   wkwkkwkwwkwkwkwkwkkwkwkwkwkwkwkwkwkwkwkwkwkw  ";
+echo  "  KATA KATA MOTIVASI UNTUK KALIAN ";
+echo  "  Percayalah kamu bisa dan kamu sudah setengah jalan ";
+echo  "  Hidup ini terlalu misterius untuk dianggap terlalu serius ";
+echo  "  Apa yang kita lakukan dalam hidup bergema dalam kekekalan ";
+echo  "  Seharusnya sulit. Jika itu mudah, semua orang akan melakukannya ";
+echo  "  Jangan takut untuk membela apa yang kamu yakini, meski itu berarti berdiri sendiri ";
+echo  "  Lupakan semua alasan itu tidak akan berhasil dan percaya satu alasan bahwa itu akan berhasil ";
+echo  "  By 0xMultiserver ";
 echo -e "\e[0m"
 echo "===================================================================" 
-sleep 2
+sleep 4
 
 # set vars
 if [ ! $NODENAME ]; then
