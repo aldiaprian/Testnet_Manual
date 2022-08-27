@@ -1,6 +1,15 @@
 #!/bin/bash
 clear
-
+echo "==================================================================="
+echo -e "\e[92m"
+echo  "   wkwkkwkwwkwkwkwkwkkwkwkwkwkwkwkwkwkwkwkwkwkw  ";
+echo  "  akokaokaokaokokaoakoakaokaokaoaokaoakokaoaoaok ";
+echo  "   wkwkkwkwwkwkwkwkwkkwkwkwkwkwkwkwkwkwkwkwkwkw  ";
+echo  "  akokaokaokaokokaoakoakaokaokaoaokaoakokaoaoaok ";
+echo  "   wkwkkwkwwkwkwkwkwkkwkwkwkwkwkwkwkwkwkwkwkwkw  ";
+echo  "   wkwkkwkwwkwkwkwkwkkwkwkwkwkwkwkwkwkwkwkwkwkw  ";
+echo -e "\e[0m"
+echo "===================================================================" 
 sleep 2
 
 # set vars
